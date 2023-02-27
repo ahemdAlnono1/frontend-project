@@ -1,0 +1,100 @@
+.form-word{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px;
+    height: 60px;
+}
+.form-word input{
+    width:20%;
+    height: 50%;
+    font-size:18px;
+    width:50%;
+    border-radius: 50px;
+    padding:10px;
+    background-color: #ddd;
+    border:none;
+}
+.form-word svg{
+    position: absolute;
+    width:20px;
+    height: 20px;
+    margin-left:43%;
+    fill:#15ff00;
+    cursor: pointer;
+}
+header{
+    height: 40px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+header .icon{
+    height: 30px;
+    width:  30px;
+}
+header .icon svg{
+    fill:#2bff00;
+}
+header .settings{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+}
+#font{
+    /* border: none; */
+    background-color: transparent;
+    padding: 5px;
+}
+.sun , .moon{
+    display:none;
+    width:20px;
+    height: 20px;
+    margin-left:30px;
+    cursor: pointer;
+}
+.moon{
+    fill:white;
+}
+.active{
+    display:block;
+}
+.play{
+    background-color: rgb(190, 132, 245);
+    width:  50px;
+    height: 50px;
+    border-radius: 50%; 
+    border:none;
+    cursor: pointer;
+    position: relative;
+    display:none;
+}
+.play svg{
+    fill:blueviolet;
+    width:30px;
+    height: 20px;
+    margin-left:50%;
+    margin-top:50%;
+    transform:translateX(-40%) translateY(-50%);
+}
+.word{
+    font-size:18px;
+    font-weight: bold;
+}
+.audios{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.audios .word{
+    font-size:35px;
+    font-weight: bold;
+}
+option{
+    color:green;
+}
+.meanings{
+    display:flex;
+    flex-direction: column;
+}
