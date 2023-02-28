@@ -1,16 +1,16 @@
 const formWord = document.querySelector(".form-word");
-formWord.addEventListener("submit" , (e)=>{
-    e.preventDefault();
+const searchButton = document.querySelector(".form-word svg");
+
+function displayData(){
     document.querySelector(".word").innerHTML = formWord.word.value;
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${formWord.word.value}`).then((res)=>{
         return res.json()
     }).then((data)=>{
-        console.log(data)
-        console.log(data[0].meanings);
         document.querySelector(".play").style.display = "block"
         let child = document.querySelector(".audio").lastElementChild;
         // remove all audio element
         while(child){
+            console.log(child)
             document.querySelector(".audio").removeChild(child)
             child= document.querySelector(".audio").lastChild;
         }
@@ -22,8 +22,6 @@ formWord.addEventListener("submit" , (e)=>{
         }
         for(let i = 0 ;i<data.length ;i++){
             for(let j = 0 ; j<data[i].meanings.length ; j++){
-                console.log(data[i].meanings[j]);
-                console.log(data[i].meanings[j].partOfSpeech);
                 const div = document.createElement("div");
                 const span = document.createElement("span");
                 const ul = document.createElement("ul");
@@ -35,6 +33,7 @@ formWord.addEventListener("submit" , (e)=>{
                     ul.appendChild(li);
                 }
                 div.appendChild(ul);
+                div.className = "world-explain"
                 document.querySelector(".meanings").appendChild(div);
             }
             for(let j = 0 ; j<data[i].phonetics.length ; j++){
@@ -46,20 +45,25 @@ formWord.addEventListener("submit" , (e)=>{
                     audio.setAttribute("src" , data[i].phonetics[j].audio);
                     audio.setAttribute("controls" , "controls");
                     audio.style.display = "none";
-                    document.querySelector(".audios").appendChild(audio)
+                    document.querySelector(".audio").appendChild(audio)
                     i = data.length; 
                     break;
                 }
             }
         }
     })
+}
+searchButton.addEventListener("click" ,function(){
+    displayData();
+})
+formWord.addEventListener("submit" , (e)=>{
+    e.preventDefault();
+    displayData();
 })
     document.querySelector(".play").addEventListener("click" , ()=>{
         document.querySelector("audio").play();
-        setTimeout(()=>{
-            document.querySelector("audio").pause();
-        },4000)
     })
+
 const themes = document.querySelectorAll(".theme div");
 for(let i =0 ;i < themes.length ; i++){
     themes[i].addEventListener("click", ()=>{
@@ -80,3 +84,9 @@ for(let i =0 ;i < themes.length ; i++){
         }
     });
 }
+document.querySelector("select").addEventListener("change" , function(){
+    const selected = document.querySelector("select").value;
+    let wordExplain = document.querySelector(".meanings");
+    console.log(selected)
+        wordExplain.style.fontFamily = `${selected}`;
+})
