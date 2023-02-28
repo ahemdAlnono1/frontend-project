@@ -1,3 +1,15 @@
+*::-webkit-scrollbar{
+    background-color: #383838;
+    width:5px;
+}
+*::-webkit-scrollbar-thumb{
+    background-color: #72f872;
+    border-radius: 10px;
+}
+*::selection{
+    background-color: yellow;
+    color:black;
+}
 .form-word{
     display: flex;
     justify-content: center;
@@ -97,4 +109,28 @@ option{
 .meanings{
     display:flex;
     flex-direction: column;
+}
+.world-explain{
+    display:flex;
+    flex-direction: column;
+    width:fit-content;
+    padding:40px;
+    align-items: flex-start;
+    padding-left:15%;
+}
+@media screen and (max-width:480px) {
+    .world-explain{
+        padding:5px;
+        padding-left: 10px;
+    }
+}
+li{
+    list-style-type:disc;
+    font-size:20px;
+    font-family: inherit;
+}
+span{
+    font-weight: bold;
+    font-size:24px;
+    font-family: inherit;
 }
